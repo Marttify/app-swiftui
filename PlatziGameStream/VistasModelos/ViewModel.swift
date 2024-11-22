@@ -17,7 +17,7 @@ class ViewModel: ObservableObject {
  
     
     init() {
-        let url = URL(string: "https://gamestream-api.herokuapp.com/api/games")!
+        let url = URL(string: "https://gamestreamapi.herokuapp.com/api/games")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         

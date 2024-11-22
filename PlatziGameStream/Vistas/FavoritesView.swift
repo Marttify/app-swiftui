@@ -13,22 +13,9 @@ struct FavoritesView:View {
     
     @ObservedObject var todosLosVideojuegos = ViewModel()
 
-    @State var isGameViewActive:Bool = false
     @State var url:String = ""
-    @State var titulo:String = ""
-    @State var studio:String = ""
-    @State var calificacion:String = ""
-    @State var anoPublicacion:String = ""
-    @State var descripcion:String = ""
-    @State var tags:[String] = [""]
-    @State var imgsUrl:[String] = [""]
-    
-    
-    
-    
     
     var body: some View{
-        
         
         ZStack{
             
@@ -36,8 +23,7 @@ struct FavoritesView:View {
             
             VStack() {
                 
-                
-                Text("FAVORITOS")
+                Text("FAVORITES")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
@@ -45,18 +31,12 @@ struct FavoritesView:View {
                 
                 ScrollView{
                     
-                    
-                   
-                        
                         ForEach(todosLosVideojuegos.gamesInfo, id: \.self) { juego in
                             
-                           
-                         
                             VStack(spacing: 0){
                                 
                                 //Bug con VideoPlayer previene esconder barra de navegacion
                                 VideoPlayer(player: AVPlayer(url: URL(string:  juego.videosUrls.mobile)!)).frame( height: 300)
-                                    
                                     
                                     Text("\(juego.title)").foregroundColor(Color.white)
                                         .padding()
@@ -66,37 +46,16 @@ struct FavoritesView:View {
                                 
                             }
                             
-                        
-                        
                         }
                         
-                 
-                    
-                    
-                    
                 }.padding(.bottom,8)
                 
-                
-                
             }.padding(.horizontal,6)
-            
-            
-            
-            
             
         }.navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         
-        
-        
-        
     }
-    
-    
-    
-   
-    
-    
     
 }
 
@@ -104,10 +63,9 @@ struct FavoritesView:View {
 
 struct FavoritesView_Previews: PreviewProvider {
 
-@ObservedObject var todosLosVideojuegos = ViewModel()
+    @ObservedObject var todosLosVideojuegos = ViewModel()
+    
     static var previews: some View {
-
-
         FavoritesView()
     }
 }

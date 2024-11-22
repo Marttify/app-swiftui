@@ -11,65 +11,42 @@ import AVKit
 
 struct HomeView: View {
     
-    
-    
     @State var tabSeleccionado:Int = 2
     
     var body: some View {
-        
-        
-        
+            
         TabView(selection:$tabSeleccionado) {
-            
-            
-            
+                
             ProfileView().navigationBarHidden(true).navigationBarBackButtonHidden(true)
                 .tabItem {
                     Image(systemName: "person")
-                    Text("Perfil")
+                    Text("Profile")
                 }.tag(0)
             
-            
-            GamesView()
-                .tabItem {
+            GamesView().tabItem {
                     Image(systemName: "gamecontroller")
-                    Text("Juegos")
+                    Text("Game")
                 }.tag(1)
-            
             
             Home().tabItem {
                 Image(systemName: "house")
-                Text("Inicio")
+                Text("Init")
             }.tag(2)
             
- 
-            
-            FavoritesView()
-                .tabItem {
+            FavoritesView().tabItem {
                     Image(systemName: "heart")
-                    Text("Favoritos")
+                    Text("Favorites")
                 }.tag(3)
             
-           
-            
-            
-            
-            
-            
-        }
-        .accentColor(.white)
-        
-   
+        }.accentColor(.white)
         
     }
-    
     
     init() {
         
         UITabBar.appearance().barTintColor = UIColor (Color("TabBar-Color"))
         UITabBar.appearance().isTranslucent = true
-        
-       
+           
     }
     
 }
@@ -78,47 +55,26 @@ struct HomeView: View {
 
 struct Home:View {
     
-    
-    
-    
     var body: some View{
-        
-        
+            
         ZStack{
             
             Color("Marine").ignoresSafeArea()
             
-            
-            
             VStack{
                 
-                
-                
                 Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.vertical, 11.0)
-                
                 
                 ScrollView(showsIndicators: false){
                     SubModuloHome()
                     
                 }
                 
-                
             }.padding(.horizontal, 18.0)
-            
-            
             
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
         
-        
-        
-        
-        
-        
-        
-        
     }
-    
-    
     
 }
 
@@ -145,8 +101,6 @@ struct SubModuloHome:View {
         
         VStack{
             
-            
-            
             HStack {
                 
                 Button(action: {watchGame(name: textoBusqueda)}, label: {
@@ -155,21 +109,13 @@ struct SubModuloHome:View {
                     Alert(title: Text("Error"), message: Text("No se encontro el juego"), dismissButton: .default(Text("Entendido")))
                 }
                 
-                
                 ZStack(alignment: .leading){
-                    
-                    
                     
                     if textoBusqueda.isEmpty { Text("Buscar un video").foregroundColor(Color(red: 174/255, green: 177/255, blue: 185/255, opacity: 1.0)) }
                     
-                    
                     TextField("", text: $textoBusqueda).foregroundColor(.white)
                     
-                    
                 }
-                
-                
-                
                 
             }.padding([.top, .leading, .bottom], 11.0)
             .background(Color("Blue-Gray"))
